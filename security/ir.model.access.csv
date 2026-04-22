@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cs_cartoncloud_raw_data_text,access_cs_cartoncloud_raw_data_text,model_cs_cartoncloud_raw_data_text,base.group_user,1,1,1,1
+access_cs_cartoncloud_raw,access_cs_cartoncloud_raw,model_cs_cartoncloud_raw,base.group_user,1,1,1,1
+access_cs_cartoncloud_raw_line,access_cs_cartoncloud_raw_line,model_cs_cartoncloud_raw_line,base.group_user,1,1,1,1
+access_stock_discrepancy_adjustment_wizard,access_stock_discrepancy_adjustment_wizard,model_stock_discrepancy_adjustment_wizard,base.group_user,1,1,1,1
+access_cartoncloud_tenant,access_cartoncloud_tenant,model_cartoncloud_tenant,base.group_user,1,1,1,1

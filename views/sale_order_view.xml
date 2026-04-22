@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale_order_form_cartoncloud_outbound_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.cartoncloud.outbound.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='client_order_ref']" position="after">
+                <field name="instruction" string="CartonCloud Instructions"/>
+                <field name="cartoncloud_outbound_order_uuid" string="CartonCloud Order ID" readonly="1" />
+                <field name="cartoncloud_outbound_last_message" string="CartonCloud Last Message" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

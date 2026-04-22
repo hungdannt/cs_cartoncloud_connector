@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_order_form_cartoncloud" model="ir.ui.view">
+        <field name="name">purchase.order.form.cartoncloud</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_cartoncloud_push_inbound_order"
+                    type="object"
+                    string="CartonCloud"
+                    icon="fa-truck"
+                    class="oe_highlight"
+                    invisible="cartoncloud_po_uuid or state != 'purchase'"
+                />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="CartonCloud" name="cartoncloud">
+                    <group>
+                        <group>
+                            <field name="cartoncloud_po_uuid" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="cartoncloud_last_sync_date" readonly="1"/>
+                            <field name="cartoncloud_sync_status" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_tree_cartoncloud" model="ir.ui.view">
+        <field name="name">purchase.order.tree.cartoncloud</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-success">cartoncloud_sync_status == 'Auto-validated'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="cartoncloud_sync_status" optional="show"/>
+                <field name="cartoncloud_last_sync_date" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

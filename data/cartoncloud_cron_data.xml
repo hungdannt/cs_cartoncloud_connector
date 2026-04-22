@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ir_cron_cartoncloud_poll_consignments" model="ir.cron">
+        <field name="name">CartonCloud: Poll Consignments (Tracking/Status)</field>
+        <field name="model_id" ref="stock.model_stock_picking" />
+        <field name="state">code</field>
+        <field name="code">model.cron_cartoncloud_poll_consignments()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True" />
+    </record>
+
+    <record id="ir_cron_cartoncloud_poll_inbound_orders" model="ir.cron">
+        <field name="name">CartonCloud: Poll Inbound Orders (Internal Transfers)</field>
+        <field name="model_id" ref="stock.model_stock_picking" />
+        <field name="state">code</field>
+        <field name="code">model.cron_cartoncloud_poll_inbound_orders()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True" />
+    </record>
+
+    <record id="ir_cron_cartoncloud_process_queue" model="ir.cron">
+        <field name="name">CartonCloud: Process Queue</field>
+        <field name="model_id" ref="model_cs_cartoncloud_raw" />
+        <field name="state">code</field>
+        <field name="code">model.cron_process_queue()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True" />
+    </record>
+
+    <record id="ir_cron_cartoncloud_sync_purchase_orders" model="ir.cron">
+        <field name="name">CartonCloud: Sync Purchase Orders</field>
+        <field name="model_id" ref="purchase.model_purchase_order" />
+        <field name="state">code</field>
+        <field name="code">model.cron_cartoncloud_sync_purchase_orders()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">10</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True" />
+    </record>
+
+    <record id="ir_cron_cartoncloud_poll_inbound_orders_purchase" model="ir.cron">
+        <field name="name">CartonCloud: Poll Inbound Orders (Purchase Orders)</field>
+        <field name="model_id" ref="purchase.model_purchase_order" />
+        <field name="state">code</field>
+        <field name="code">model.cron_cartoncloud_poll_inbound_orders_purchase()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">30</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True" />
+    </record>
+
+    <record id="ir_cron_cartoncloud_sync_inventory" model="ir.cron">
+        <field name="name">CartonCloud: Sync Inventory</field>
+        <field name="model_id" ref="stock.model_stock_quant" />
+        <field name="state">code</field>
+        <field name="code">model.cron_cartoncloud_sync_inventory()</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">5</field>
+        <field name="interval_type">minutes</field>
+        <field name="active" eval="True" />
+    </record>
+
+
+    <record id="ir_cron_invoice_payment_reminders" model="ir.cron">
+        <field name="name">Invoice Payment Reminders</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_send_invoice_reminders()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="ir_cron_cartoncloud_clean_raw_data" model="ir.cron">
+        <field name="name">CartonCloud: Clean Raw Data</field>
+        <field name="model_id" ref="cs_cartoncloud_connector.model_cs_cartoncloud_raw"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_clean_raw_data()</field>
+        <field name="interval_number">30</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <record id="view_cs_cartoncloud_raw_form" model="ir.ui.view">
+        <field name="name">cs.cartoncloud.raw.form</field>
+        <field name="model">cs.cartoncloud.raw</field>
+        <field name="arch" type="xml">
+            <form string="CartonCloud Raw Data">
+                <header>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="raw_data_type" readonly="1" />
+                        <field name="create_date" />
+                        <field name="remarks" />
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Progress">
+                            <field name="raw_data_line" mode="tree">
+                                <tree edit="false" create="false" delete="true">
+                                    <field name="name" readonly="1" />
+                                    <field name="picking_id" readonly="1" />
+                                    <field name="remark" readonly="1" />
+                                    <field
+                                        name="state"
+                                        decoration-danger="state == 'error'"
+                                        decoration-success="state == 'done'"
+                                        widget="badge"
+                                        optional="show"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cs_cartoncloud_raw_tree" model="ir.ui.view">
+        <field name="name">cs.cartoncloud.raw.tree</field>
+        <field name="model">cs.cartoncloud.raw</field>
+        <field name="arch" type="xml">
+            <tree string="CartonCloud Raw Data" default_order="create_date desc, id desc">
+                <field name="name" />
+                <field name="raw_data_type" />
+                <field
+                    name="state"
+                    decoration-danger="state == 'error'"
+                    decoration-success="state == 'done'"
+                    widget="badge"
+                />
+                <field name="create_date" />
+                <field name="remarks" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_cs_cartoncloud_raw_search" model="ir.ui.view">
+        <field name="name">cs.cartoncloud.raw.search</field>
+        <field name="model">cs.cartoncloud.raw</field>
+        <field name="arch" type="xml">
+            <search string="CartonCloud Raw Data">
+                <field name="raw_data_line" />
+                <field name="name" />
+                <filter string="Done" name="done_state" domain="[('state', '=', 'done')]" />
+                <filter string="Error" name="error_state" domain="[('state', '=', 'error')]" />
+                <group expand="0" string="Group By">
+                    <filter string="Type" name="raw_data_type" context="{'group_by':'raw_data_type'}" />
+                    <filter string="Status" name="state" context="{'group_by':'state'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_cs_cartoncloud_raw" model="ir.actions.act_window">
+        <field name="name">CartonCloud Raw Logs</field>
+        <field name="res_model">cs.cartoncloud.raw</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

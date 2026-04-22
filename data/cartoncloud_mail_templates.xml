@@ -1,0 +1,1527 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+    <template id="mail_notification_light_no_powered" inherit_id="mail.mail_notification_light">
+        <xpath expr="//tr[td/a[contains(@href,'odoo.com')]]" position="replace"/>
+    </template>
+
+    <record id="mail_template_cartoncloud_tracking" model="mail.template">
+        <field name="name">CartonCloud Dispatch Notification</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="subject">TASTE OF AWESOMENESS - DISPATCH NOTIFICATION - {{object.partner_id.name}} - {{object.origin}}</field>
+        <field name="email_from">orders@hellotoa.com</field>
+        <field name="partner_to">{{object.partner_id.id}}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div>
+                <div>
+                    <p>
+                        Dear <t t-out="object.partner_id.name"/>
+                    </p>
+                    <p><em>This is a system generated email</em></p>
+                    <p>Thank you for your recent order. We're pleased to let you know that your order has been dispatched.</p>
+                    <p>Thank you for placing an order with TASTE OF AWESOMENESS!  </p>
+                </div>
+                    <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                    <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                    <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                        THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-size: 12px;">
+                        Please do not hesitate to contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                        should you have any queries or concerns.
+                    </p>
+
+                    <p style="margin: 0 0 18px 0; font-size: 12px;">
+                        <strong>Best Regards</strong><br/>
+                        <strong>The Team at TASTE OF AWESOMENESS</strong>
+                    </p>
+
+                    <div style="text-align:center; margin: 28px 0 18px 0;">
+                        <div style="margin: 0 0 18px 0;">
+                            <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                 alt="Taste of Awesomeness"
+                                 style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                        </div>
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                            <tr>
+                                <td style="padding: 0 12px; vertical-align: middle;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                         alt="Known Stranger"
+                                         style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                                </td>
+                                <td style="padding: 0 12px; vertical-align: middle;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                         alt="Simple Addition"
+                                         style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                        <p style="margin: 0 0 8px 0;">
+                            The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                        </p>
+                        <p style="margin: 0 0 8px 0;">
+                            Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                        </p>
+                        <p style="margin: 0 0 8px 0;">
+                            Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                        </p>
+                        <p style="margin: 0 0 12px 0;">
+                            Your tax invoice will be emailed to you separately.
+                        </p>
+                        <p style="margin: 0;">
+                            <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                            |
+                            <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                        </p>
+                    </div>
+
+                    <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                        <p style="margin: 0 0 6px 0;">
+                            You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                        </p>
+                        <p style="margin: 0 0 6px 0;">
+                            Please do not reply to this email as it is not monitored.
+                        </p>
+                        <p style="margin: 0 0 10px 0;">
+                            If you have any questions, you can contact us at
+                            <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                        </p>
+
+                        <p style="margin: 0 0 6px 0;">
+                            © 2025
+                            <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                            All rights reserved.
+                        </p>
+                        <p style="margin: 0 0 6px 0;">
+                            ABN 19 652 869 620
+                        </p>
+                        <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                            If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                        </p>
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                            <tr>
+                                <td style="padding:0 10px;">
+                                    <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                             alt="Facebook"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                                <td style="padding:0 10px;">
+                                    <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                             alt="Instagram"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                                <td style="padding:0 10px;">
+                                    <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                             alt="Website"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                            This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                            <br/>
+                            If you have received this email in error, please notify the sender and delete this email immediately.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="mail_template_cartoncloud_delivered" model="mail.template">
+        <field name="name">CartonCloud Delivered Notification</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+
+        <field name="subject">TASTE OF AWESOMENESS - DELIVERY NOTIFICATION - {{object.partner_id.name}} - {{object.origin}}</field>
+
+        <field name="email_from">orders@hellotoa.com</field>
+        <field name="partner_to">{{object.partner_id.id}}</field>
+        <field name="auto_delete">False</field>
+
+        <field name="body_html" type="html">
+            <div>
+                <div>
+                    <p>
+                        Dear <t t-out="object.partner_id.name"/>
+                    </p>
+                    <p><em>This is a system generated email</em></p>
+                    <p>Thank you for your recent order. We're pleased to let you know that your order has been delivered.</p>
+                    <p>Thank you for placing an order with TASTE OF AWESOMENESS!  </p>
+                </div>
+                    <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                    <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                    <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                        THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-size: 12px;">
+                        Please do not hesitate to contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                        should you have any queries or concerns.
+                    </p>
+
+                    <p style="margin: 0 0 18px 0; font-size: 12px;">
+                        <strong>Best Regards</strong><br/>
+                        <strong>The Team at TASTE OF AWESOMENESS</strong>
+                    </p>
+
+                    <div style="text-align:center; margin: 28px 0 18px 0;">
+                        <div style="margin: 0 0 18px 0;">
+                            <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                 alt="Taste of Awesomeness"
+                                 style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                        </div>
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                            <tr>
+                                <td style="padding: 0 12px; vertical-align: middle;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                         alt="Known Stranger"
+                                         style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                                </td>
+                                <td style="padding: 0 12px; vertical-align: middle;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                         alt="Simple Addition"
+                                         style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                        <p style="margin: 0 0 8px 0;">
+                            The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                        </p>
+                        <p style="margin: 0 0 8px 0;">
+                            Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                        </p>
+                        <p style="margin: 0 0 8px 0;">
+                            Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                        </p>
+                        <p style="margin: 0 0 12px 0;">
+                            Your tax invoice will be emailed to you separately.
+                        </p>
+                        <p style="margin: 0;">
+                            <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                            |
+                            <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                        </p>
+                    </div>
+
+                    <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                        <p style="margin: 0 0 6px 0;">
+                            You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                        </p>
+                        <p style="margin: 0 0 6px 0;">
+                            Please do not reply to this email as it is not monitored.
+                        </p>
+                        <p style="margin: 0 0 10px 0;">
+                            If you have any questions, you can contact us at
+                            <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                        </p>
+
+                        <p style="margin: 0 0 6px 0;">
+                            © 2025
+                            <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                            All rights reserved.
+                        </p>
+                        <p style="margin: 0 0 6px 0;">
+                            ABN 19 652 869 620
+                        </p>
+                        <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                            If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                        </p>
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                            <tr>
+                                <td style="padding:0 10px;">
+                                    <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                             alt="Facebook"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                                <td style="padding:0 10px;">
+                                    <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                             alt="Instagram"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                                <td style="padding:0 10px;">
+                                    <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                             alt="Website"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                            This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                            <br/>
+                            If you have received this email in error, please notify the sender and delete this email immediately.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </field>
+    </record>
+
+    <record id="email_template_edi_invoice_custom" model="mail.template">
+        <field name="name">Invoice: Sending (Custom)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="email_from">online@hellotoa.com</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="subject">TASTE OF AWESOMENESS TAX INVOICES - {{object.partner_id.name}} - {{object.invoice_origin}}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px; font-family: Arial, sans-serif; font-size: 13px;">
+                <p style="font-size: 10px;"><em>This is a system generated email</em></p>
+
+                <p style="margin: 25px 0px 14px 0px; padding: 0px">
+                    Dear <t t-out="object.partner_id.name or ''"/>
+                </p>
+
+                <p style="margin: 0px 0px 14px 0px; padding: 0px">
+                    Thank you for placing an order with TASTE OF AWESOMENESS!
+                </p>
+
+                <p style="margin: 0px 0px 20px 0px; padding: 0px;">
+                    Please find the attached tax invoice for your reference.
+                </p>
+
+                <p style="margin: 0px 0px 20px 0px; padding: 0px;">
+                    Order Number: <t t-out="object.invoice_origin or ''"/>.
+                    Amount <strong><span t-field="object.amount_residual" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/></strong> due on
+                    <t t-out="object.invoice_date_due.strftime('%d-%b-%y') if object.invoice_date_due else ''"/>
+                </p>
+
+                <p style="margin: 0px 0px 10px 0px; padding: 0px;"><strong><u>Payment Options / Instructions</u></strong></p>
+
+                <ol style="margin: 0px 0px 18px 22px; padding: 0px;">
+                    <li style="margin: 0px 0px 10px 10px;">
+                        <strong>Secure Credit Card Payments</strong> can now be made online here:
+                        <t t-if="object.payment_link">
+                            <a t-att-href="object.payment_link" style="color:#1a73e8; text-decoration: underline;">Pay now</a>
+                        </t>
+                        <t t-else="">
+                            <span>Pay now</span>
+                        </t>
+                    </li>
+                    <li style="margin: 0px 0px 0px 10px;">
+                        <strong>Direct Bank Deposit</strong>
+                    </li>
+                </ol>
+
+                <div style="margin: 0px 0px 18px 40px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Name: TOA INTERNATIONAL PTY LTD</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>BSB: 015-025</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Number: 164681973</strong></p>
+
+                    <p style="margin: 0px 0px 18px 0px; padding: 0px;">
+                        <strong>Please email remittance advice once paid to
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a></strong>
+                    </p>
+
+                    <p style="margin: 0px; padding: 0px;">
+                        <strong>Payment Reference must be provided:
+                        <t t-if="object.invoice_origin"> <t t-out="object.invoice_origin"/></t></strong>
+                    </p>
+                    <p style="margin: 6px 0px 0px 0px; padding: 0px; font-size: 12px;">
+                        *This payment option will delay your order at least 24 hours so do not choose this payment option for urgent orders.
+                    </p>
+                </div>
+                <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                    THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                </p>
+                <p style="margin: 0 0 14px 0; font-size: 12px;">
+                    Please do not hesitate to contact us at
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    should you have any queries or concerns.
+                </p>
+
+                <p style="margin: 0 0 18px 0; font-size: 12px;">
+                    <strong>Best Regards</strong><br/>
+                    <strong>The Team at TASTE OF AWESOMENESS</strong>
+                </p>
+
+                <div style="text-align:center; margin: 28px 0 18px 0;">
+                    <div style="margin: 0 0 18px 0;">
+                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                alt="Taste of Awesomeness"
+                                style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                    </div>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                        alt="Known Stranger"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                        alt="Simple Addition"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                    <p style="margin: 0 0 8px 0;">
+                        The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                    </p>
+                    <p style="margin: 0 0 12px 0;">
+                        Your tax invoice will be emailed to you separately.
+                    </p>
+                    <p style="margin: 0;">
+                        <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                        |
+                        <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                    </p>
+                </div>
+
+                <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                    <p style="margin: 0 0 6px 0;">
+                        You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        Please do not reply to this email as it is not monitored.
+                    </p>
+                    <p style="margin: 0 0 10px 0;">
+                        If you have any questions, you can contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    </p>
+
+                    <p style="margin: 0 0 6px 0;">
+                        © 2025
+                        <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                        All rights reserved.
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        ABN 19 652 869 620
+                    </p>
+                    <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                        If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                    </p>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                        <tr>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                            alt="Facebook"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                            alt="Instagram"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                            alt="Website"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                        This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                        <br/>
+                        If you have received this email in error, please notify the sender and delete this email immediately.
+                    </p>
+                </div>
+            </div>
+            </div>
+        </field>
+        <field name="report_template_ids" eval="[(4, ref('account.account_invoices'))]"/>
+        <field name="auto_delete" eval="False"/>
+    </record>
+
+    <record id="cartoncloud_order_confirmed" model="mail.template">
+        <field name="name">Order confirmed (CartonCloud)</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="subject">{{ object.company_id.name }} - Order Confirmation - {{ object.partner_id.name }} - {{ object.name }}</field>
+        <field name="email_from">online@hellotoa.com</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="email_cc">{{ object.user_id.login or '' }}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>
+                    Dear <t t-out="object.partner_id.name"/>,
+                </p>
+                <p>
+                    Thank you for placing an order with TASTE OF AWESOMENESS!  
+                </p>
+                <p>
+                    We are pleased to inform your order has been confirmed.
+                </p>
+
+                <p>
+                    <strong>The order number</strong>: <t t-out="object.name"/> <br/>
+                    <strong>Date Ordered</strong>: <t t-out="object.date_order.strftime('%A, %B %d, %Y %I:%M %p') if object.date_order else ''"/>
+
+                </p>
+
+                <table style="width:100%;margin-bottom:10px; margin-top:5px;">
+                    <tr>
+                        <!-- SHIP TO -->
+                        <td style="width:50%; vertical-align:top; padding-right:12px;">
+                            <p style="margin:0 0 4px 0;">
+                                <strong>Ship-to address</strong>
+                            </p>
+                            <p style="margin:0;">
+                                <t t-out="object.partner_shipping_id.name"/><br/>
+                                <t t-out="object.partner_shipping_id.street or ''"/><br/>
+                                <t t-if="object.partner_shipping_id.street2">
+                                    <t t-out="object.partner_shipping_id.street2"/><br/>
+                                </t>
+                                <t t-out="object.partner_shipping_id.city or ''"/>
+                                <t t-out="object.partner_shipping_id.state_id.name or ''"/>
+                                <t t-out="object.partner_shipping_id.zip or ''"/><br/>
+                                <t t-out="object.partner_shipping_id.country_id.name or ''"/><br/>
+                                ABN: <t t-out="object.partner_shipping_id.vat or ''"/>
+                            </p>
+                        </td>
+
+                        <!-- BILL TO -->
+                        <td style="width:50%; vertical-align:top; padding-left:12px;">
+                            <p style="margin:0 0 4px 0;">
+                                <strong>Bill-to address</strong>
+                            </p>
+                            <p style="margin:0;">
+                                <t t-out="object.partner_invoice_id.name"/><br/>
+                                <t t-out="object.partner_invoice_id.street or ''"/><br/>
+                                <t t-if="object.partner_invoice_id.street2">
+                                    <t t-out="object.partner_invoice_id.street2"/><br/>
+                                </t>
+                                <t t-out="object.partner_invoice_id.city or ''"/>
+                                <t t-out="object.partner_invoice_id.state_id.name or ''"/>
+                                <t t-out="object.partner_invoice_id.zip or ''"/><br/>
+                                <t t-out="object.partner_invoice_id.country_id.name or ''"/><br/>
+                                ABN: <t t-out="object.partner_invoice_id.vat or ''"/>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <!-- ===== ORDER LINES HEADER ===== -->
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr style="background:#f5f5f5;">
+                        <td style=" width:10%; border:1px solid #ddd; padding:6px; font-weight:bold;" align="left">
+                            Item
+                        </td>
+                        <td style=" width:40%; border:1px solid #ddd; padding:6px; font-weight:bold;" align="left">
+                            Description
+                        </td>
+                        <td style="width:10%;border:1px solid #ddd; padding:6px; font-weight:bold;" align="right">
+                            Unit Price
+                        </td>
+                        <td style="width:10%;border:1px solid #ddd; padding:6px; font-weight:bold;" align="right">
+                            Quantity
+                        </td>
+                        <td style="width:10%;border:1px solid #ddd; padding:6px; font-weight:bold;" align="right">
+                            UOM
+                        </td>
+                        <td style="width:20%;border:1px solid #ddd; padding:6px; font-weight:bold;" align="right">
+                            Total
+                        </td>
+                    </tr>
+                </table>
+                <!-- ===== ORDER LINES BODY ===== -->
+                <t t-foreach="object.order_line" t-as="line">
+                    <t t-if="not line.display_type">
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr>
+                            <td style="width:10%;border:1px solid #ddd; padding:6px;" align="left">
+                                <t t-out="line.product_id.default_code or ''"/>
+                            </td>
+                            <td style="width:40%;border:1px solid #ddd; padding:6px;" align="left">
+                                <t t-out="line.name"/>
+                            </td>
+                            <td style="width:10%;border:1px solid #ddd; padding:6px;" align="right">
+                                <span t-field="line.price_unit" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/>
+                            </td>
+                            <td style="width:10%;border:1px solid #ddd; padding:6px;" align="right">
+                                <t t-out="line.product_uom_qty"/>
+                            </td>
+                            <td style="width:10%;border:1px solid #ddd; padding:6px;" align="right">
+                                <t t-out="line.product_uom.name"/>
+                            </td>
+                            <td style="width:20%;border:1px solid #ddd; padding:6px;" align="right">
+                                <span t-field="line.price_subtotal" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/>
+                            </td>
+                        </tr>
+                    </table>
+                    </t>
+                </t>
+                <!-- ===== TOTALS ===== -->
+                <table style="width:100%;border-top:0; border-collapse:collapse; margin-bottom: 5px">
+                    <tr>
+                        <td width="80%" style="padding:6px; text-align:right;">
+                            Subtotal
+                        </td>
+                        <td style="border:1px solid #ddd; padding:6px;" align="right">
+                            <span t-field="object.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="80%" style="padding:6px; text-align:right;">
+                            Tax
+                        </td>
+                        <td style="border:1px solid #ddd; padding:6px;" align="right">
+                            <span t-field="object.amount_tax" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="80%" style="padding:6px; text-align:right;">
+                            Shipping
+                        </td>
+                        <td style="border:1px solid #ddd; padding:6px;" align="right">
+                           
+                        </td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td width="80%" style="padding:6px; text-align:right;">
+                            Total
+                        </td>
+                        <td style="border:1px solid #ddd; padding:6px;" align="right">
+                            <span t-field="object.amount_total" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 20px; font-family: Arial, sans-serif;">
+                    <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                    <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                        THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                    </p>
+                    <p style="margin: 0 0 14px 0; font-size: 12px;">
+                        Please do not hesitate to contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                        should you have any queries or concerns.
+                    </p>
+
+                    <p style="margin: 0 0 18px 0; font-size: 12px;">
+                        <strong>Best Regards</strong><br/>
+                        <strong>The Team at TASTE OF AWESOMENESS</strong>
+                    </p>
+
+                    <div style="text-align:center; margin: 28px 0 18px 0;">
+                        <div style="margin: 0 0 18px 0;">
+                            <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                 alt="Taste of Awesomeness"
+                                 style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                        </div>
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                            <tr>
+                                <td style="padding: 0 12px; vertical-align: middle;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                         alt="Known Stranger"
+                                         style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                                </td>
+                                <td style="padding: 0 12px; vertical-align: middle;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                         alt="Simple Addition"
+                                         style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                        <p style="margin: 0 0 8px 0;">
+                            The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                        </p>
+                        <p style="margin: 0 0 8px 0;">
+                            Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                        </p>
+                        <p style="margin: 0 0 8px 0;">
+                            Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                        </p>
+                        <p style="margin: 0 0 12px 0;">
+                            Your tax invoice will be emailed to you separately.
+                        </p>
+                        <p style="margin: 0;">
+                            <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                            |
+                            <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                        </p>
+                    </div>
+
+                    <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                        <p style="margin: 0 0 6px 0;">
+                            You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                        </p>
+                        <p style="margin: 0 0 6px 0;">
+                            Please do not reply to this email as it is not monitored.
+                        </p>
+                        <p style="margin: 0 0 10px 0;">
+                            If you have any questions, you can contact us at
+                            <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                        </p>
+
+                        <p style="margin: 0 0 6px 0;">
+                            © 2025
+                            <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                            All rights reserved.
+                        </p>
+                        <p style="margin: 0 0 6px 0;">
+                            ABN 19 652 869 620
+                        </p>
+                        <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                            If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                        </p>
+
+                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                            <tr>
+                                <td style="padding:0 10px;">
+                                    <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                             alt="Facebook"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                                <td style="padding:0 10px;">
+                                    <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                             alt="Instagram"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                                <td style="padding:0 10px;">
+                                    <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                             alt="Website"
+                                             style="width: 28px; height: 28px; display:block;"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                            This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                            <br/>
+                            If you have received this email in error, please notify the sender and delete this email immediately.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </field>
+    </record>
+
+    
+    <record id="mail_template_cartoncloud_payment_done" model="mail.template">
+        <field name="name">Payment Received (CartonCloud)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="subject">Thank you - Payment received for Order {{object.invoice_origin or ''}}</field>
+        <field name="email_from">{{ object._get_email_from_by_currency() }}</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="email_cc">{{ object.invoice_user_id.login or '' }}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                <div style="background-color: #d4edda; padding: 20px; border-radius: 8px; border: 1px solid #c3e6cb;">
+                    <p style="font-size: 16px; color: #155724;">
+                        Hi
+                        <t t-if="object.partner_id.name">
+                            <t t-out="object.partner_id.name"/>
+                        </t>,
+                    </p>
+
+                    <p style="font-size: 16px; color: #155724;">
+                        Thank you — we have received payment for order <strong><t t-out="object.invoice_origin or ''"/></strong>.
+                    </p>
+
+                    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #28a745;">
+                        <p style="margin: 5px 0; font-size: 16px; color: #212529;">
+                            <strong>Invoice Number:</strong>
+                            <t t-out="object.name"/> <br/>
+                            <strong>Amount paid:</strong> <span t-field="object.amount_total" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/><br/>
+                            <strong>Payment date:</strong> <t t-out="object.date"/><br/>
+                            <strong>Payment method:</strong> <t t-out="d"/>
+                        </p>
+                        <p style="margin: 10px 0 0 0; font-size: 16px; color: #28a745; font-weight: bold;">
+                            🎉 Received Payment Successfully!
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="margin: 0; color: #155724; font-size: 14px;">
+                            If you have any questions, please do not hesitate to contact us
+                        </p>
+
+                        <p style="margin: 10px 0 0 0; color: #155724; font-size: 14px;">
+                            Kind regards,<br/>
+                            <t t-out="object.company_id.name"/>
+                            <br/>
+                            <t t-out="object._get_email_from_by_currency()"/>
+                        </p>
+
+                        <p style="border-top: 1px solid #c3e6cb; margin-top: 10px; margin-bottom: -10px; font-size: 12px; color: #6c757d;">
+                            <em>This is an automated notification. Please do not reply to this email.</em>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </field>
+    </record>
+
+
+    <record id="mail_template_cartoncloud_invoice_due" model="mail.template">
+        <field name="name">Invoice Due Reminder (CartonCloud)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="subject">PAYMENT DUE TODAY - TASTE OF AWESOMENESS - {{object.invoice_origin}}</field>
+        <field name="email_from">online@hellotoa.com</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="email_cc">{{ object.invoice_user_id.email or '' }}</field>
+
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div>
+                <p style="margin-top: 25px;">Dear <t t-out="object.partner_id.name"/>,</p>
+                <p>Thank you for placing an order with TASTE OF AWESOMENESS!</p>
+                <p>Please find the attached tax invoice for your reference.</p>
+                <p>
+                    Order Number: <t t-out="object.invoice_origin or ''"/>.
+                    Amount <strong><span t-field="object.amount_residual" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/></strong> due on
+                    <t t-out="object.invoice_date_due.strftime('%d-%b-%y') if object.invoice_date_due else ''"/>
+                </p>
+                <p>
+                    If payment has been made, please email your remittance advice to 
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a> 
+                    along with your order number <t t-out="object.invoice_origin or ''"/>. Thank you and we appreciate your assistance.
+                </p>
+                <p style="margin: 35px 0px 10px 0px; padding: 0px;"><strong><u>Payment Options / Instructions</u></strong></p>
+
+                <ol style="margin: 0px 0px 18px 22px; padding: 0px;">
+                    <li style="margin: 0px 0px 10px 10px;">
+                        <strong>Secure Credit Card Payments</strong> can now be made online here:
+                        <t t-if="object.payment_link">
+                            <a t-att-href="object.payment_link" style="color:#1a73e8; text-decoration: underline;">Pay now</a>
+                        </t>
+                        <t t-else="">
+                            <span>Pay now</span>
+                        </t>
+                    </li>
+                    <li style="margin: 0px 0px 0px 10px;">
+                        <strong>Direct Bank Deposit</strong>
+                    </li>
+                </ol>
+
+                <div style="margin: 0px 0px 18px 40px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Name: TOA INTERNATIONAL PTY LTD</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>BSB: 015-025</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Number: 164681973</strong></p>
+
+                    <p style="margin: 0px 0px 18px 0px; padding: 0px;">
+                        <strong>Please email remittance advice once paid to
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a></strong>
+                    </p>
+
+                    <p style="margin: 0px; padding: 0px;">
+                        <strong>Payment Reference must be provided:
+                        <t t-if="object.invoice_origin"> <t t-out="object.invoice_origin"/></t></strong>
+                    </p>
+                    <p style="margin: 6px 0px 0px 0px; padding: 0px; font-size: 12px;">
+                        *This payment option will delay your order at least 24 hours so do not choose this payment option for urgent orders.
+                    </p>
+                </div>
+                <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                    THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                </p>
+                <p style="margin: 0 0 14px 0; font-size: 12px;">
+                    Please do not hesitate to contact us at
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    should you have any queries or concerns.
+                </p>
+
+                <p style="margin: 0 0 18px 0; font-size: 12px;">
+                    <strong>Best Regards</strong><br/>
+                    <strong>The Team at TASTE OF AWESOMENESS</strong>
+                </p>
+
+                <div style="text-align:center; margin: 28px 0 18px 0;">
+                    <div style="margin: 0 0 18px 0;">
+                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                alt="Taste of Awesomeness"
+                                style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                    </div>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                        alt="Known Stranger"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                        alt="Simple Addition"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                    <p style="margin: 0 0 8px 0;">
+                        The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                    </p>
+                    <p style="margin: 0 0 12px 0;">
+                        Your tax invoice will be emailed to you separately.
+                    </p>
+                    <p style="margin: 0;">
+                        <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                        |
+                        <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                    </p>
+                </div>
+
+                <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                    <p style="margin: 0 0 6px 0;">
+                        You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        Please do not reply to this email as it is not monitored.
+                    </p>
+                    <p style="margin: 0 0 10px 0;">
+                        If you have any questions, you can contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    </p>
+
+                    <p style="margin: 0 0 6px 0;">
+                        © 2025
+                        <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                        All rights reserved.
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        ABN 19 652 869 620
+                    </p>
+                    <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                        If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                    </p>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                        <tr>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                            alt="Facebook"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                            alt="Instagram"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                            alt="Website"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                        This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                        <br/>
+                        If you have received this email in error, please notify the sender and delete this email immediately.
+                    </p>
+                </div>
+            </div>
+
+
+            </div>
+        </field>
+    </record>
+
+    <record id="mail_template_cartoncloud_invoice_overdue_7" model="mail.template">
+        <field name="name">Invoice Overdue 7 Days (CartonCloud)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="subject">PAYMENT REMINDER 7 DAYS OVERDUE TODAY - TASTE OF AWESOMENESS - {{object.invoice_origin}}</field>
+        <field name="email_from">online@hellotoa.com</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="email_cc">{{ object.invoice_user_id.email or '' }}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div>
+                <p style="margin-top: 25px;">Dear <t t-out="object.partner_id.name"/>,</p>
+                <p>Thank you for placing an order with TASTE OF AWESOMENESS!</p>
+                <p>Please find the attached tax invoice for your reference.</p>
+                <p>
+                    Order Number: <t t-out="object.invoice_origin or ''"/>.
+                    Amount <strong><span t-field="object.amount_residual" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/></strong> due on
+                    <t t-out="object.invoice_date_due.strftime('%d-%b-%y') if object.invoice_date_due else ''"/> - <strong>7 DAYS OVERDUE</strong>
+                </p>
+                <p>
+                    If payment has been made, please email your remittance advice to 
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a> 
+                    along with your order number <t t-out="object.invoice_origin or ''"/>. Thank you and we appreciate your assistance.
+                </p>
+                <p style="margin: 35px 0px 10px 0px; padding: 0px;"><strong><u>Payment Options / Instructions</u></strong></p>
+
+                <ol style="margin: 0px 0px 18px 22px; padding: 0px;">
+                    <li style="margin: 0px 0px 10px 10px;">
+                        <strong>Secure Credit Card Payments</strong> can now be made online here:
+                        <t t-if="object.payment_link">
+                            <a t-att-href="object.payment_link" style="color:#1a73e8; text-decoration: underline;">Pay now</a>
+                        </t>
+                        <t t-else="">
+                            <span>Pay now</span>
+                        </t>
+                    </li>
+                    <li style="margin: 0px 0px 0px 10px;">
+                        <strong>Direct Bank Deposit</strong>
+                    </li>
+                </ol>
+
+                <div style="margin: 0px 0px 18px 40px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Name: TOA INTERNATIONAL PTY LTD</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>BSB: 015-025</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Number: 164681973</strong></p>
+
+                    <p style="margin: 0px 0px 18px 0px; padding: 0px;">
+                        <strong>Please email remittance advice once paid to
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a></strong>
+                    </p>
+
+                    <p style="margin: 0px; padding: 0px;">
+                        <strong>Payment Reference must be provided:
+                        <t t-if="object.invoice_origin"> <t t-out="object.invoice_origin"/></t></strong>
+                    </p>
+                    <p style="margin: 6px 0px 0px 0px; padding: 0px; font-size: 12px;">
+                        *This payment option will delay your order at least 24 hours so do not choose this payment option for urgent orders.
+                    </p>
+                </div>
+                <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                    THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                </p>
+                <p style="margin: 0 0 14px 0; font-size: 12px;">
+                    Please do not hesitate to contact us at
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    should you have any queries or concerns.
+                </p>
+
+                <p style="margin: 0 0 18px 0; font-size: 12px;">
+                    <strong>Best Regards</strong><br/>
+                    <strong>The Team at TASTE OF AWESOMENESS</strong>
+                </p>
+
+                <div style="text-align:center; margin: 28px 0 18px 0;">
+                    <div style="margin: 0 0 18px 0;">
+                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                alt="Taste of Awesomeness"
+                                style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                    </div>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                        alt="Known Stranger"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                        alt="Simple Addition"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                    <p style="margin: 0 0 8px 0;">
+                        The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                    </p>
+                    <p style="margin: 0 0 12px 0;">
+                        Your tax invoice will be emailed to you separately.
+                    </p>
+                    <p style="margin: 0;">
+                        <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                        |
+                        <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                    </p>
+                </div>
+
+                <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                    <p style="margin: 0 0 6px 0;">
+                        You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        Please do not reply to this email as it is not monitored.
+                    </p>
+                    <p style="margin: 0 0 10px 0;">
+                        If you have any questions, you can contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    </p>
+
+                    <p style="margin: 0 0 6px 0;">
+                        © 2025
+                        <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                        All rights reserved.
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        ABN 19 652 869 620
+                    </p>
+                    <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                        If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                    </p>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                        <tr>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                            alt="Facebook"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                            alt="Instagram"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                            alt="Website"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                        This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                        <br/>
+                        If you have received this email in error, please notify the sender and delete this email immediately.
+                    </p>
+                </div>
+            </div>
+
+
+            </div>
+        </field>
+    </record>
+
+    <record id="mail_template_cartoncloud_invoice_overdue_14" model="mail.template">
+        <field name="name">Invoice Overdue 14 Days (CartonCloud)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="subject">PAYMENT REMINDER 14 DAYS OVERDUE TODAY - TASTE OF AWESOMENESS - {{object.invoice_origin}}</field>
+        <field name="email_from">online@hellotoa.com</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="email_cc">{{ object.invoice_user_id.email or '' }}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div>
+                <p style="margin-top: 25px;">Dear <t t-out="object.partner_id.name"/>,</p>
+                <p>Thank you for placing an order with TASTE OF AWESOMENESS!</p>
+                <p>Please find the attached tax invoice for your reference.</p>
+                <p>
+                    Order Number: <t t-out="object.invoice_origin or ''"/>.
+                    Amount <strong><span t-field="object.amount_residual" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/></strong> due on
+                    <t t-out="object.invoice_date_due.strftime('%d-%b-%y') if object.invoice_date_due else ''"/> - <strong>14 DAYS OVERDUE</strong>
+                </p>
+                <p>
+                    If payment has been made, please email your remittance advice to 
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a> 
+                    along with your order number <t t-out="object.invoice_origin or ''"/>. Thank you and we appreciate your assistance.
+                </p>
+                <p style="margin: 35px 0px 10px 0px; padding: 0px;"><strong><u>Payment Options / Instructions</u></strong></p>
+
+                <ol style="margin: 0px 0px 18px 22px; padding: 0px;">
+                    <li style="margin: 0px 0px 10px 10px;">
+                        <strong>Secure Credit Card Payments</strong> can now be made online here:
+                        <t t-if="object.payment_link">
+                            <a t-att-href="object.payment_link" style="color:#1a73e8; text-decoration: underline;">Pay now</a>
+                        </t>
+                        <t t-else="">
+                            <span>Pay now</span>
+                        </t>
+                    </li>
+                    <li style="margin: 0px 0px 0px 10px;">
+                        <strong>Direct Bank Deposit</strong>
+                    </li>
+                </ol>
+
+                <div style="margin: 0px 0px 18px 40px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Name: TOA INTERNATIONAL PTY LTD</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>BSB: 015-025</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Number: 164681973</strong></p>
+
+                    <p style="margin: 0px 0px 18px 0px; padding: 0px;">
+                        <strong>Please email remittance advice once paid to
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a></strong>
+                    </p>
+
+                    <p style="margin: 0px; padding: 0px;">
+                        <strong>Payment Reference must be provided:
+                        <t t-if="object.invoice_origin"> <t t-out="object.invoice_origin"/></t></strong>
+                    </p>
+                    <p style="margin: 6px 0px 0px 0px; padding: 0px; font-size: 12px;">
+                        *This payment option will delay your order at least 24 hours so do not choose this payment option for urgent orders.
+                    </p>
+                </div>
+                <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                    THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                </p>
+                <p style="margin: 0 0 14px 0; font-size: 12px;">
+                    Please do not hesitate to contact us at
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    should you have any queries or concerns.
+                </p>
+
+                <p style="margin: 0 0 18px 0; font-size: 12px;">
+                    <strong>Best Regards</strong><br/>
+                    <strong>The Team at TASTE OF AWESOMENESS</strong>
+                </p>
+
+                <div style="text-align:center; margin: 28px 0 18px 0;">
+                    <div style="margin: 0 0 18px 0;">
+                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                alt="Taste of Awesomeness"
+                                style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                    </div>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                        alt="Known Stranger"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                        alt="Simple Addition"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                    <p style="margin: 0 0 8px 0;">
+                        The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                    </p>
+                    <p style="margin: 0 0 12px 0;">
+                        Your tax invoice will be emailed to you separately.
+                    </p>
+                    <p style="margin: 0;">
+                        <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                        |
+                        <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                    </p>
+                </div>
+
+                <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                    <p style="margin: 0 0 6px 0;">
+                        You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        Please do not reply to this email as it is not monitored.
+                    </p>
+                    <p style="margin: 0 0 10px 0;">
+                        If you have any questions, you can contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    </p>
+
+                    <p style="margin: 0 0 6px 0;">
+                        © 2025
+                        <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                        All rights reserved.
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        ABN 19 652 869 620
+                    </p>
+                    <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                        If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                    </p>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                        <tr>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                            alt="Facebook"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                            alt="Instagram"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                            alt="Website"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                        This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                        <br/>
+                        If you have received this email in error, please notify the sender and delete this email immediately.
+                    </p>
+                </div>
+            </div>
+
+
+            </div>
+        </field>
+    </record>
+
+    <record id="mail_template_cartoncloud_invoice_overdue_30" model="mail.template">
+        <field name="name">Invoice Overdue 30 Days (CartonCloud)</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="subject">PAYMENT REMINDER 30 DAYS OVERDUE TODAY - TASTE OF AWESOMENESS - {{object.invoice_origin}}</field>
+        <field name="email_from">online@hellotoa.com</field>
+        <field name="partner_to">{{ object.partner_id.id }}</field>
+        <field name="email_cc">{{ object.invoice_user_id.email or '' }}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html" type="html">
+            <div>
+                <p style="margin-top: 25px;">Dear <t t-out="object.partner_id.name"/>,</p>
+                <p>Thank you for placing an order with TASTE OF AWESOMENESS!</p>
+                <p>Please find the attached tax invoice for your reference.</p>
+                <p>
+                    Order Number: <t t-out="object.invoice_origin or ''"/>.
+                    Amount <strong><span t-field="object.amount_residual" t-options="{'widget': 'monetary', 'display_currency': object.currency_id}"/></strong> due on
+                    <t t-out="object.invoice_date_due.strftime('%d-%b-%y') if object.invoice_date_due else ''"/> - <strong>30 DAYS OVERDUE</strong>
+                </p>
+                <p>
+                    If payment has been made, please email your remittance advice to 
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a> 
+                    along with your order number <t t-out="object.invoice_origin or ''"/>. Thank you and we appreciate your assistance.
+                </p>
+                <p style="margin: 35px 0px 10px 0px; padding: 0px;"><strong><u>Payment Options / Instructions</u></strong></p>
+
+                <ol style="margin: 0px 0px 18px 22px; padding: 0px;">
+                    <li style="margin: 0px 0px 10px 10px;">
+                        <strong>Secure Credit Card Payments</strong> can now be made online here:
+                        <t t-if="object.payment_link">
+                            <a t-att-href="object.payment_link" style="color:#1a73e8; text-decoration: underline;">Pay now</a>
+                        </t>
+                        <t t-else="">
+                            <span>Pay now</span>
+                        </t>
+                    </li>
+                    <li style="margin: 0px 0px 0px 10px;">
+                        <strong>Direct Bank Deposit</strong>
+                    </li>
+                </ol>
+
+                <div style="margin: 0px 0px 18px 40px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Name: TOA INTERNATIONAL PTY LTD</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>BSB: 015-025</strong></p>
+                    <p style="margin: 0px; padding: 0px;"><strong>Account Number: 164681973</strong></p>
+
+                    <p style="margin: 0px 0px 18px 0px; padding: 0px;">
+                        <strong>Please email remittance advice once paid to
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8; text-decoration: underline;">orders@hellotoa.com</a></strong>
+                    </p>
+
+                    <p style="margin: 0px; padding: 0px;">
+                        <strong>Payment Reference must be provided:
+                        <t t-if="object.invoice_origin"> <t t-out="object.invoice_origin"/></t></strong>
+                    </p>
+                    <p style="margin: 6px 0px 0px 0px; padding: 0px; font-size: 12px;">
+                        *This payment option will delay your order at least 24 hours so do not choose this payment option for urgent orders.
+                    </p>
+                </div>
+                <div style="margin-top: 40px; font-family: Arial, sans-serif;">
+                <t t-set="base_url" t-value="object.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 700;">
+                    THIS IS AN AUTOMATED EMAIL - PLEASE DO NOT REPLY.
+                </p>
+                <p style="margin: 0 0 14px 0; font-size: 12px;">
+                    Please do not hesitate to contact us at
+                    <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    should you have any queries or concerns.
+                </p>
+
+                <p style="margin: 0 0 18px 0; font-size: 12px;">
+                    <strong>Best Regards</strong><br/>
+                    <strong>The Team at TASTE OF AWESOMENESS</strong>
+                </p>
+
+                <div style="text-align:center; margin: 28px 0 18px 0;">
+                    <div style="margin: 0 0 18px 0;">
+                        <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/toa.png'"
+                                alt="Taste of Awesomeness"
+                                style="max-width: 340px; width: 100%; height: auto; display: inline-block;"/>
+                    </div>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto;">
+                        <tr>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/knownstranger.png'"
+                                        alt="Known Stranger"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                            <td style="padding: 0 12px; vertical-align: middle;">
+                                <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/simpleaddition.png'"
+                                        alt="Simple Addition"
+                                        style="max-width: 170px; width: 170px; height: auto; display: block;"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="text-align:center; margin: 0 0 12px 0; font-size: 10px; color:#666; line-height: 1.25;">
+                    <p style="margin: 0 0 8px 0;">
+                        The general guideline for deliveries to all major cities is 2 to 4 business days. It can take up to 7 business days for more remote areas.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders placed before 12:00 PM AEST on business days (excluding weekends and public holidays) are usually dispatched the same business day.
+                    </p>
+                    <p style="margin: 0 0 8px 0;">
+                        Orders received after 12:00 PM AEST or during non-business days will be shipped on the next business day.
+                    </p>
+                    <p style="margin: 0 0 12px 0;">
+                        Your tax invoice will be emailed to you separately.
+                    </p>
+                    <p style="margin: 0;">
+                        <a href="https://www.knownstranger.com.au/pages/terms-of-use" style="color:#1a73e8;text-decoration:underline;">Terms of Service</a>
+                        |
+                        <a href="https://www.knownstranger.com.au/pages/privacy-policy-1" style="color:#1a73e8;text-decoration:underline;">Privacy Policy</a>
+                    </p>
+                </div>
+
+                <div style="text-align:center; margin: 12px 0 10px 0; font-size: 10px; color:#444; line-height: 1.25;">
+                    <p style="margin: 0 0 6px 0;">
+                        You are receiving this email because this is a service message from TOA INTERNATIONAL PTY LTD ( TASTE OF AWESOMENESS )
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        Please do not reply to this email as it is not monitored.
+                    </p>
+                    <p style="margin: 0 0 10px 0;">
+                        If you have any questions, you can contact us at
+                        <a href="mailto:orders@hellotoa.com" style="color:#1a73e8;text-decoration:underline;">orders@hellotoa.com</a>
+                    </p>
+
+                    <p style="margin: 0 0 6px 0;">
+                        © 2025
+                        <a href="http://www.knownstranger.com.au/" style="color:#1a73e8;text-decoration:underline;">www.knownstranger.com.au</a>
+                        All rights reserved.
+                    </p>
+                    <p style="margin: 0 0 6px 0;">
+                        ABN 19 652 869 620
+                    </p>
+                    <p style="margin: 0 0 16px 0; font-size: 10px; color:#666;">
+                        If you have received this email in error, please inform us immediately by return email and delete this email and any attachments.
+                    </p>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin: 0 auto 16px auto;">
+                        <tr>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.facebook.com/knownstranger.au/mentions/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/fb.png'"
+                                            alt="Facebook"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="https://www.instagram.com/knownstranger.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/ig.png'"
+                                            alt="Instagram"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                            <td style="padding:0 10px;">
+                                <a href="http://www.knownstranger.com.au/" style="text-decoration:none; display:inline-block;">
+                                    <img t-att-src="base_url + '/cs_cartoncloud_connector/static/src/img/email/web.png'"
+                                            alt="Website"
+                                            style="width: 28px; height: 28px; display:block;"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin: 0; font-size: 8px; color:#666; line-height: 1.25;">
+                        This email and any attachment may contain privileged and/or confidential information and are intended for the named addressee only. It is forbidden to share any part of this message with a third party without the written consent of the sender. No warranty is made that this e-mail is free from computer virus, defect or error; it is your responsibility to check this e-mail and any attachments with proper software to ensure the content has not been infected, intercepted or corrupted. The sender does not accept any liability for loss/damage incurred by using or viewing the content of this e-mail.
+                        <br/>
+                        If you have received this email in error, please notify the sender and delete this email immediately.
+                    </p>
+                </div>
+            </div>
+
+
+            </div>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <!-- CartonCloud Tenant Tree View -->
+    <record id="view_cartoncloud_tenant_tree" model="ir.ui.view">
+        <field name="name">cartoncloud.tenant.tree</field>
+        <field name="model">cartoncloud.tenant</field>
+        <field name="arch" type="xml">
+            <tree string="CartonCloud Tenants">
+                <field name="name"/>
+                <field name="tenant_uuid"/>
+                <field name="gateway_host"/>
+                <field name="company_id"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- CartonCloud Tenant Form View -->
+    <record id="view_cartoncloud_tenant_form" model="ir.ui.view">
+        <field name="name">cartoncloud.tenant.form</field>
+        <field name="model">cartoncloud.tenant</field>
+        <field name="arch" type="xml">
+            <form string="CartonCloud Tenant">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Tenant Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active"/>
+                            <field name="company_id"/>
+                            <field name="partner_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="default_customer_uuid" placeholder="Default customer UUID for this tenant"/>
+                        </group>
+                        <group>
+                            <field name="tenant_uuid" placeholder="UUID of the CartonCloud tenant"/>
+                            <field name="gateway_host" placeholder="https://api.cartoncloud.com"/>
+                            <field name="api_version"/>
+                            <field name="default_warehouse_uuid" placeholder="Default warehouse UUID for this tenant"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Authentication" name="authentication">
+                            <group>
+                                <field name="auth_client_id" placeholder="OAuth2 Client ID"/>
+                                <field name="auth_client_secret" password="True" placeholder="OAuth2 Client Secret"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- CartonCloud Tenant Search View -->
+    <record id="view_cartoncloud_tenant_search" model="ir.ui.view">
+        <field name="name">cartoncloud.tenant.search</field>
+        <field name="model">cartoncloud.tenant</field>
+        <field name="arch" type="xml">
+            <search string="CartonCloud Tenants">
+                <field name="name"/>
+                <field name="tenant_uuid"/>
+                <field name="company_id"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- CartonCloud Tenant Action -->
+    <record id="action_cartoncloud_tenant" model="ir.actions.act_window">
+        <field name="name">Tenants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cartoncloud.tenant</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_active': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first CartonCloud Tenant
+            </p>
+            <p>
+                CartonCloud tenants allow you to manage multiple CartonCloud accounts with different credentials.
+                Each tenant can have its own authentication settings and default values.
+            </p>
+        </field>
+    </record>
+
+</odoo>

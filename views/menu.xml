@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <record id="menu_cs_cartooncloud_root" model="ir.ui.menu">
+        <field name="name">CartoonCloud</field>
+        <field name="sequence" eval="1" />
+        <field name="groups_id" eval="[(6,0,[ref('base.group_user')])]" />
+        <field name="web_icon">cs_cartoncloud_connector,static/description/icon.png</field>
+    </record>
+
+    <record id="menu_cs_cartooncloud_raw_data" model="ir.ui.menu">
+        <field name="name">Raw Logs</field>
+        <field name="action" ref="action_cs_cartoncloud_raw" />
+        <field name="parent_id" ref="menu_cs_cartooncloud_root" />
+        <field name="sequence" eval="2" />
+    </record>
+
+    <record id="menu_cs_cartooncloud_tenant_settings" model="ir.ui.menu">
+        <field name="name">Settings</field>
+        <field name="action" ref="action_cartoncloud_tenant" />
+        <field name="parent_id" ref="menu_cs_cartooncloud_root" />
+        <field name="sequence" eval="10" />
+    </record>
+</odoo>
